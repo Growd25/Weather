@@ -1,0 +1,15 @@
+package com.growd25.weather.utils
+
+import android.content.Context
+import android.widget.Toast
+import androidx.annotation.IdRes
+import androidx.annotation.StringRes
+
+fun Context.toast(text: CharSequence) {
+    Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+}
+
+fun Context.toast(@StringRes stringResId: Int) {
+    Toast.makeText(this, stringResId, Toast.LENGTH_SHORT).show()
+}
+

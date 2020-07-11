@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.growd25.weather.R
-import com.growd25.weather.entities.model.ExamplePojo
+import com.growd25.weather.entities.model.CityWeather
 import com.growd25.weather.presentation.DetailViewModel
 import com.growd25.weather.presentation.factory.DetailViewModelFactory
 import com.growd25.weather.ui.list.WeatherFragment.Companion.CITY_KEY
@@ -42,7 +42,7 @@ class WeatherDetailsFragment : Fragment(R.layout.fragment_city_detail) {
         viewModelDetailsFragment.getCityById(requireNotNull(cityId))
     }
 
-    private fun setData(examplePojo: ExamplePojo) {
+    private fun setData(examplePojo: CityWeather) {
         tempDetailTextView.text = examplePojo.main?.temp.toString()
         descriprionTextView.text = examplePojo.name
         val iconId = examplePojo.weather?.get(0)?.icon

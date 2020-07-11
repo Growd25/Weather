@@ -5,6 +5,7 @@ import android.util.Log
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.growd25.weather.entities.City
+import com.growd25.weather.entities.CityResult
 import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -15,24 +16,25 @@ class WeatherAssetManager @Inject constructor(
     private val gson: Gson
 ) {
 
-    init {
-        Log.i("den","WeatherMANAGER!!!")
-    }
-
-
-    fun getListCities(): List<City> {
+    fun getListCities(): CityResult {
         return try {
-            val inputStream = context.assets.open(JSON_FILE)
+            val inputStream = context.assets.open(FILE_NAME)
             val jsonString = inputStream.bufferedReader().use { it.readText() }
-            gson.fromJson(jsonString, object : TypeToken<ArrayList<City>>() {}.type)
+            val result = gson.fromJson<ArrayList<City>>(
+                jsonString,
+                object : TypeToken<ArrayList<City>>() {}.type
+            )
+            CityResult(result, null)
         } catch (e: Exception) {
             Log.e(LOG_TAG, e.toString())
-            emptyList()
+            CityResult(emptyList(), e)
+
         }
     }
 
     companion object {
-        const val JSON_FILE = "cities.json"
+
+        const val FILE_NAME = "cities.json"
         const val LOG_TAG = "WeatherAssetManager"
     }
 

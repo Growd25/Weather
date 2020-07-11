@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Weather</string>
+    <string name="load_error">Ошибка загрузки</string>
 </resources>

@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 
-class ExamplePojo {
+class CityWeather {
     @SerializedName("coord")
     @Expose
     var coord: Coord? = null
