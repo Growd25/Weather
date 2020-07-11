@@ -7,7 +7,7 @@ interface WeatherRepository {
 
 
 
-    suspend fun getListCities(): ArrayList<City>
+    suspend fun getListCities(): List<City>
     suspend fun getCityWeatherDetail(cityId: Int): ExamplePojo
 
 

@@ -6,17 +6,17 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/temperatureDetail"
+        android:id="@+id/tempDetailTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <TextView
-        android:id="@+id/descriprion"
+        android:id="@+id/descriprionTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <ImageView
-        android:id="@+id/image_view"
+        android:id="@+id/cityIconImageView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         tools:background="@color/colorAccent" />

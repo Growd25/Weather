@@ -1,12 +1,10 @@
 package com.growd25.weather.entities.model
 
-import android.os.Parcelable
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
 
-@Parcelize
-class ExamplePojo : Parcelable {
+
+class ExamplePojo {
     @SerializedName("coord")
     @Expose
     var coord: Coord? = null

@@ -41,7 +41,7 @@ dependencies {
     implementation 'com.google.dagger:dagger-android-support:2.26' // if you use the support libraries
 
     //room
-    implementation "androidx.room:room-ktx:2.2.3"
+    implementation "androidx.room:room-ktx:2.2.4"
     //coroutines
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.3'

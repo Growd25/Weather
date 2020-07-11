@@ -23,22 +23,18 @@ class WeatherAdapter(private val listenerItem: (c: City) -> Unit) :
         holder.bind(getItem(position))
     }
 
-    class WeatherViewHolder(itemView: View, lambda: (city: City) -> Unit) :
+    class WeatherViewHolder(itemView: View, listener: (city: City) -> Unit) :
         RecyclerView.ViewHolder(itemView) {
         private lateinit var city: City
-        //        private val cityId: TextView = itemView.findViewById(R.id.textView)
-        private val nameCity: TextView = itemView.findViewById(R.id.textView)
-//        private val country: TextView = itemView.findViewById(R.id.textView3)
+        private val nameCity: TextView = itemView.findViewById(R.id.nameTextView)
 
         init {
-            itemView.setOnClickListener { lambda.invoke(city) }
+            itemView.setOnClickListener { listener.invoke(city) }
         }
 
         fun bind(city: City) {
             this.city = city
-//            cityId.text = city.id.toString()
             nameCity.text = city.name
-//            country.text = city.country
         }
 
     }

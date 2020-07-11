@@ -4,7 +4,10 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.growd25.weather.R
 import com.growd25.weather.entities.model.ExamplePojo
-import com.growd25.weather.ui.weather.WeatherFragment
+import com.growd25.weather.ui.details.WeatherDetailsFragment
+import com.growd25.weather.ui.list.WeatherFragment
+import dagger.android.AndroidInjection
+import dagger.android.HasAndroidInjector
 
 class MainActivity : AppCompatActivity(), WeatherFragment.CityItemListener {
 
@@ -25,19 +28,10 @@ class MainActivity : AppCompatActivity(), WeatherFragment.CityItemListener {
         }
     }
 
-    override fun clickedOnCity(examplePojo: ExamplePojo) {
+    override fun clickedOnCity(cityId: Int) {
         supportFragmentManager.beginTransaction()
             .addToBackStack(null)
-            .replace(R.id.container, WeatherDetailsFragment.newInstance(examplePojo))
+            .replace(R.id.container, WeatherDetailsFragment.newInstance(cityId))
             .commit()
     }
 }
-
-
-
-
-
-
-
-
-

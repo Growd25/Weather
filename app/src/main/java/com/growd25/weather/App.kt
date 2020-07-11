@@ -2,23 +2,24 @@ package com.growd25.weather
 
 import android.app.Application
 import com.growd25.weather.di.DaggerWeatherComponent
-import com.growd25.weather.di.WeatherComponent
-import com.growd25.weather.di.modules.WeatherModule
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class App : Application() {
-    companion object {
-        lateinit var component: WeatherComponent
-    }
+class App : Application(), HasAndroidInjector {
 
+    @Inject
+    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Any>
 
     override fun onCreate() {
         super.onCreate()
-        initInjection()
+        DaggerWeatherComponent.factory().create(this).inject(this)
     }
 
-    private fun initInjection() {
-        component = DaggerWeatherComponent.builder()
-            .weatherModule(WeatherModule(applicationContext))
-            .build()
+    override fun androidInjector(): AndroidInjector<Any> {
+        return dispatchingAndroidInjector
     }
+
+
 }

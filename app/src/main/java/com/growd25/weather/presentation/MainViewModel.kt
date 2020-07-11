@@ -1,5 +1,7 @@
 package com.growd25.weather.presentation
 
+import android.util.Log
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.growd25.weather.App
@@ -10,11 +12,11 @@ import kotlinx.coroutines.*
 import javax.inject.Inject
 
 
-class WeatherViewModel @Inject constructor(private val weatherRepository: WeatherRepository) :
+class MainViewModel @Inject constructor(private val weatherRepository: WeatherRepository) :
     ViewModel() {
     private val coroutineScope = CoroutineScope(Dispatchers.Main)
-    private val _cities = MutableLiveData<ArrayList<City>>()
-    var cities: MutableLiveData<ArrayList<City>>
+    private val _cities = MutableLiveData<List<City>>()
+    var cities: LiveData<List<City>>
 
     init {
         coroutineScope.launch { setLiveData() }
@@ -26,14 +28,6 @@ class WeatherViewModel @Inject constructor(private val weatherRepository: Weathe
             weatherRepository.getListCities()
         }
         _cities.value = cities
-    }
-
-
-    suspend fun search(cityId: Int): ExamplePojo {
-        val result = coroutineScope.async {
-            weatherRepository.getCityWeatherDetail(cityId)
-        }
-        return result.await()
     }
 
     override fun onCleared() {
